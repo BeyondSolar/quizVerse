@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 // Allow frontend origin
 app.use(cors({
-  origin: 'https://quizverse-1qho.onrender.com/', 
+  origin: 'https://quizverse-1qho.onrender.com', 
   credentials: true
 }));
 app.use(express.json());
