@@ -7,23 +7,24 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login'); 
+    navigate('/login');
   };
 
   return (
-    <div className="h-20 bg-white bg-opacity-20 flex items-center justify-between px-10 text-white shadow-md">
+    <div className="h-20 bg-white/10 backdrop-blur-sm flex items-center justify-between px-10 text-white shadow-md border-b border-white/20">
       {/* Logo */}
       <span
         onClick={() => navigate('/dashboard')}
-        className="text-3xl font-bold cursor-pointer hover:text-yellow-300 transition duration-200"
+        className="text-3xl font-extrabold tracking-wide cursor-pointer hover:text-yellow-300 transition duration-300"
       >
-        Quiz Verse 🎯
+        QuizVerse 🎯
       </span>
 
       {/* User Info + Logout */}
-      <div className="flex items-center gap-6 text-lg">
-        <span className="font-semibold">
-          👋 {user?.username} {role === 'student' ? '👨‍🎓' : '👨‍🏫'}
+      <div className="flex items-center gap-6 text-lg font-medium">
+        <span className="flex items-center gap-2">
+          👋 {user?.username}
+          <span>{role === 'student' ? '👨‍🎓' : '👨‍🏫'}</span>
         </span>
         <button
           onClick={handleLogout}
@@ -37,3 +38,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+

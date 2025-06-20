@@ -85,43 +85,48 @@ const AttemptQuiz = ({ quiz, questions }) => {
   };
 
   if (submitted && result) {
-    return (
-      <div className="text-white text-center mt-10">
-        <h2 className="text-2xl font-bold">🎉 Submission Successful!</h2>
-        <p className="mt-4 text-lg">
-          You scored <strong>{result.score}</strong> out of <strong>{result.total}</strong>
-        </p>
-        <button
-          onClick={() => navigate(`/dashboard/leaderboard/${quiz.quizCode}`)}
-          className="mt-6 bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded text-white"
-        >
-          View Leaderboard
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div className="text-white text-center mt-20 font-sans space-y-6">
+      <h2 className="text-4xl font-bold text-green-400 animate-bounce">🎉 Quiz Submitted!</h2>
+      <p className="text-lg">
+        You scored <span className="font-bold text-yellow-300">{result.score}</span> out of{' '}
+        <span className="font-bold">{result.total}</span>
+      </p>
+      <button
+        onClick={() => navigate(`/dashboard/leaderboard/${quiz.quizCode}`)}
+        className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 px-6 py-3 text-white font-semibold rounded-xl shadow transition-all duration-300 hover:scale-105"
+      >
+        View Leaderboard
+      </button>
+    </div>
+  );
+}
+
 
   const currentQuestion = questions[currentIndex];
 
   return (
-    <div className="text-white max-w-2xl mx-auto mt-10 space-y-6">
-      <QuizTimer timeLeft={timeLeft} />
-      <h2 className="text-xl font-bold mb-2">{quiz.title}</h2>
+  <div className="text-white max-w-2xl mx-auto mt-12 p-6 bg-white bg-opacity-10 rounded-2xl shadow-lg font-sans space-y-6">
+    <QuizTimer timeLeft={timeLeft} />
 
-      <QuizQuestion
-        question={currentQuestion}
-        selected={answers[currentIndex]}
-        onSelect={handleSelectOption}
-      />
+    <h2 className="text-3xl font-bold text-center mb-4 text-yellow-300">{quiz.title}</h2>
 
+    <QuizQuestion
+      question={currentQuestion}
+      selected={answers[currentIndex]}
+      onSelect={handleSelectOption}
+    />
+
+    <div className="text-center">
       <button
         onClick={handleSubmitAnswer}
-        className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white mt-4"
+        className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-all duration-300 hover:scale-105"
       >
-        Submit Answer
+        {currentIndex === questions.length - 1 ? 'Submit Quiz' : 'Submit Answer'}
       </button>
     </div>
-  );
+  </div>
+);
 };
 
 export default AttemptQuiz;
