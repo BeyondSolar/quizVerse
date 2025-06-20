@@ -8,7 +8,7 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'], // make Inter the default 'sans'
       },
-    },
+    },  
   },
   plugins: [],
 };

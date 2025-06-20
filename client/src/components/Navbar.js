@@ -11,20 +11,23 @@ const Navbar = () => {
   };
 
   return (
-    <div className="h-16 bg-white bg-opacity-20 flex items-center justify-between px-6 text-white shadow-md">
+    <div className="h-20 bg-white bg-opacity-20 flex items-center justify-between px-10 text-white shadow-md">
+      {/* Logo */}
       <span
         onClick={() => navigate('/dashboard')}
-        className="text-xl font-semibold cursor-pointer hover:text-yellow-300 transition duration-200"
+        className="text-3xl font-bold cursor-pointer hover:text-yellow-300 transition duration-200"
       >
-        Quiz Verse🎯
+        Quiz Verse 🎯
       </span>
-      <div className="flex items-center gap-4">
-        <span className="font-medium">
+
+      {/* User Info + Logout */}
+      <div className="flex items-center gap-6 text-lg">
+        <span className="font-semibold">
           👋 {user?.username} {role === 'student' ? '👨‍🎓' : '👨‍🏫'}
         </span>
         <button
           onClick={handleLogout}
-          className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-xl text-sm"
+          className="px-4 py-2 text-base text-white bg-red-500 rounded transition duration-300 hover:bg-red-600 hover:shadow-[0_0_0_4px_rgba(255,255,255,0.3)]"
         >
           Logout
         </button>

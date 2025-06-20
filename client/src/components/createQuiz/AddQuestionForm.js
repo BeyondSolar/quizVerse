@@ -34,11 +34,11 @@ const QuestionForm = ({ quiz, numberOfQuestions }) => {
 
   if (currentIndex >= numberOfQuestions) {
     return (
-      <div className="text-center mt-10">
-        <h2 className="text-2xl font-bold text-green-300">🎉 Quiz Created Successfully!</h2>
-        <p className="mt-4 text-lg">
-          Your Quiz Code:{" "}
-          <span className="bg-white text-black px-3 py-1 rounded font-mono">
+      <div className="text-center mt-10 bg-white bg-opacity-90 p-8 rounded-xl shadow-xl max-w-xl mx-auto">
+        <h2 className="text-2xl font-bold text-green-600">🎉 Quiz Created Successfully!</h2>
+        <p className="mt-4 text-lg text-gray-800">
+          Your Quiz Code:{' '}
+          <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded font-mono">
             {quiz.quizCode}
           </span>
         </p>
@@ -47,7 +47,7 @@ const QuestionForm = ({ quiz, numberOfQuestions }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white text-black p-6 rounded shadow-md mt-6">
+    <form onSubmit={handleSubmit} className="bg-white bg-opacity-90 text-black p-6 rounded shadow-xl max-w-xl mx-auto mt-10 space-y-3 font-sans">
       <h2 className="text-xl font-bold mb-4">Add Question {currentIndex + 1}</h2>
 
       <label className="block mb-2 font-semibold">Question</label>
