@@ -5,13 +5,15 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) || null);
-  const [token] = useState(() => localStorage.getItem('token') || null);
+  const [token, setToken] = useState(() => localStorage.getItem('token') || null);
+
   const role = useMemo(() => user?.role || null, [user]);
 
   const login = async (username, password) => {
     try {
       const data = await loginUser(username, password);
       setUser(data.user);
+      setToken(data.token); // ✅ update token state
       localStorage.setItem('user', JSON.stringify(data.user));
       localStorage.setItem('token', data.token);
       return true;
@@ -25,6 +27,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const data = await registerUser(username, email, password, role);
       setUser(data.user);
+      setToken(data.token); // ✅ update token state
       localStorage.setItem('user', JSON.stringify(data.user));
       localStorage.setItem('token', data.token);
       return true;
@@ -36,6 +39,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    setToken(null); // ✅ clear token state
     localStorage.removeItem('user');
     localStorage.removeItem('token');
   };

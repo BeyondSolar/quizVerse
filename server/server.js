@@ -8,9 +8,19 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-// Allow frontend origin
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  'http://localhost:3000' // optional, keep for dev
+];
+
 app.use(cors({
-  origin: 'https://quizverse-1qho.onrender.com', 
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());
