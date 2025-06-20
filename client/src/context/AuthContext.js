@@ -1,5 +1,5 @@
 import React, { createContext, useState, useMemo } from 'react';
-import axios from 'axios';
+import { loginUser, registerUser } from '../utils/authService';
 
 export const AuthContext = createContext();
 
@@ -10,10 +10,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { username, password });
-      setUser(res.data.user);
-      localStorage.setItem('user', JSON.stringify(res.data.user));
-      localStorage.setItem('token', res.data.token);
+      const data = await loginUser(username, password);
+      setUser(data.user);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      localStorage.setItem('token', data.token);
       return true;
     } catch (err) {
       console.error('Login failed:', err.response?.data || err.message);
@@ -23,15 +23,10 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (username, email, password, role) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', {
-        username,
-        email,
-        password,
-        role
-      });
-      setUser(res.data.user);
-      localStorage.setItem('user', JSON.stringify(res.data.user));
-      localStorage.setItem('token', res.data.token);
+      const data = await registerUser(username, email, password, role);
+      setUser(data.user);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      localStorage.setItem('token', data.token);
       return true;
     } catch (err) {
       console.error('Registration failed:', err.response?.data || err.message);
