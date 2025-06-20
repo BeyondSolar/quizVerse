@@ -7,7 +7,7 @@ const QuizQuestion = ({ question, selected, onSelect }) => {
         <div
           key={index}
           onClick={() => onSelect(index)}
-          className={`w-full p-3 rounded-lg border transition duration-300 cursor-pointer
+          className={`w-full p-3 rounded border transition duration-300 cursor-pointer
             ${
               selected === index
                 ? 'bg-green-500 text-white border-green-600'

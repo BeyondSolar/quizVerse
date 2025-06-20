@@ -106,7 +106,7 @@ const AttemptQuiz = ({ quiz, questions }) => {
   const currentQuestion = questions[currentIndex];
 
   return (
-  <div className="text-white max-w-2xl mx-auto mt-12 p-6 bg-white bg-opacity-10 rounded-2xl shadow-lg font-sans space-y-6">
+  <div className="text-white max-w-2xl mx-auto mt-12 p-6 bg-white bg-opacity-10 rounded-xl shadow-lg font-sans space-y-6">
     <QuizTimer timeLeft={timeLeft} />
 
     <h2 className="text-3xl font-bold text-center mb-4 text-yellow-300">{quiz.title}</h2>
